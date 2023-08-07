@@ -35,8 +35,8 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
 		die();
 	}
 }
-echo $result =  mysqli_query($conn,"SELECT*FROM product Where name = '$name'");
-$check = mysqli_num_rows($result);
+// echo $result =  mysqli_query($conn,"SELECT*FROM product Where name = '$name'");
+// $check = mysqli_num_rows($result);
 if (isset($_POST['submit'])) {
 	$name = get_safe_value($conn, $_POST['name']);
 	$mrp = get_safe_value($conn, $_POST['mrp']);
@@ -49,7 +49,8 @@ if (isset($_POST['submit'])) {
 	$meta_keyword = get_safe_value($conn, $_POST['meta_keyword']);
 	
 	
-
+echo $result =  mysqli_query($conn,"SELECT*FROM product Where `name` = '$name'");
+$check = mysqli_num_rows($result);
 	if ($check > 0) {
 		if (isset($_GET['id']) && $_GET['id'] != '') {
 			$getData = mysqli_fetch_assoc($result);
