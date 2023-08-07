@@ -47,10 +47,10 @@ if (isset($_POST['submit'])) {
 	$meta_title = get_safe_value($conn, $_POST['meta_title']);
 	$meta_desc = get_safe_value($conn, $_POST['meta_desc']);
 	$meta_keyword = get_safe_value($conn, $_POST['meta_keyword']);
-	
-	
-echo $result =  mysqli_query($conn,"SELECT*FROM product Where `name` = '$name'");
-$check = mysqli_num_rows($result);
+
+	$sql = "SELECT * FROM product Where `name` = '$name'";
+	echo $result =  mysqli_query($conn,$sql );
+	$check =  mysqli_fetch_assoc($result);
 	if ($check > 0) {
 		if (isset($_GET['id']) && $_GET['id'] != '') {
 			$getData = mysqli_fetch_assoc($result);
